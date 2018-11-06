@@ -1,8 +1,8 @@
 # assume nodeos is running on localhost with
 # nodeos -d eos.data/producer_node --config-dir eos.data/producer_node logging.json -p eosio -e --plugin eosio::chain_api_plugin --plugin eosio::history_api_plugin --plugin eosio::http_plugin
 
-cleos wallet create -n xfer-wallet -f wallet.txt
-cleos wallet unlock -n xfer-wallet --password "$(< wallet.txt)"
+cleos wallet create -n xfer-wallet -f xfer-wallet.txt
+cleos wallet unlock -n xfer-wallet --password "$(< xfer-wallet.txt)"
 cleos wallet import -n xfer-wallet --private-key 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
 cleos set contract eosio contracts/eosio.bios -p eosio
 
@@ -32,7 +32,7 @@ cleos get currency balance eosio.token user1
 cleos get currency balance eosio.token user2
 
 # you can remove the temp wallet
-# rm ~/eosio-wallet/xfer-wallet.wallet
+rm ~/eosio-wallet/xfer-wallet.wallet
 
 # remove the tmp nodeos files
 # rm -rf eos.data/producer_node/*
